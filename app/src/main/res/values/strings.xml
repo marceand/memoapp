@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Memozation</string>
+    <string name="title_welcome">Welcome to Memozation</string>
+    <string name="add_verb">Add verb</string>
+    <string name="review_verbs">Review verbs</string>
+    <string name="hint_word">Word&#8230;</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>
