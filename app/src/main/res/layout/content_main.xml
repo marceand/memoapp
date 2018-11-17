@@ -8,8 +8,8 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_words"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_words"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -3,8 +3,17 @@
     <string name="title_welcome">Welcome to Memozation</string>
     <string name="add_verb">Add verb</string>
     <string name="review_verbs">Review verbs</string>
-    <string name="hint_word">Word&#8230;</string>
+    <string name="hint_word">to verify&#8230;</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_cancel">cancel</string>
+    <string name="action_save">save</string>
+    <string name="save_hint">to verify</string>
+    <string name="edit_title">Edit Word</string>
+    <string name="delete_title">Delete</string>
+    <string name="delete_message">Are you sure you want to delete word?</string>
+    <string name="action_delete">delete</string>
+    <string name="add_word_title">Add word</string>
+    <string name="action_share">Share</string>
 </resources>
