@@ -9,7 +9,7 @@ An app for saving, editing, deleting and sharing vocabulary word.
 
 # Screenshot
 List of word
-![Word list](https://github.com/marceand/memoapp/blob/develop/screenshot/word_list.png)
+<img src="https://github.com/marceand/memoapp/blob/develop/screenshot/word_list.png" width="450" height="650">
 
 Add a word
 ![add word](https://github.com/marceand/memoapp/blob/develop/screenshot/add_word.png)
