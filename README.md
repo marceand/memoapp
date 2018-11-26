@@ -9,12 +9,12 @@ An app for saving, editing, deleting and sharing vocabulary word.
 
 # Screenshot
 List of word
-![List of word](.github/screenshot/word_list.png)
+![List of word](https://github.com/marceand/memoapp/tree/develop/screenshot/word_list.png)
 
 Add a word
-![Add word](.github/screenshot/add_word.png)
+![Add word](https://github.com/marceand/memoapp/tree/develop/screenshot/add_word.png)
 
 Edit Word
-![Edit word](.github/screenshot/edit_word.png)
+![Edit word](https://github.com/marceand/memoapp/tree/develop/screenshot/edit_word.png)
 
 
