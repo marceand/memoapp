@@ -8,13 +8,10 @@ An app for saving, editing, deleting and sharing vocabulary word.
 3. Coroutine - used to perform asynchronous database operations 
 
 # Screenshot
-List of word
-<img src="https://github.com/marceand/memoapp/blob/develop/screenshot/word_list.png" width="450" height="650">
+<img src="https://github.com/marceand/memoapp/blob/develop/screenshot/word_list.png" width="350" height="650">
 
-Add a word
-![add word](https://github.com/marceand/memoapp/blob/develop/screenshot/add_word.png)
+<img src="https://github.com/marceand/memoapp/blob/develop/screenshot/add_word.png" width="350" height="650">
 
-Edit Word
-![edit word](https://github.com/marceand/memoapp/blob/develop/screenshot/edit_word.png)
+<img src="https://github.com/marceand/memoapp/blob/develop/screenshot/edit_word.png" width="350" height="650">
 
 
