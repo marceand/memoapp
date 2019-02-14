@@ -1,6 +1,6 @@
-# Memoization app
+# mVocabulary app
 
-An app for saving, editing, deleting and sharing vocabulary vocabulary.
+An app for saving, editing, deleting and sharing vocabulary.
 
 # Dependency
 1. Room - used to store vocabulary vocabulary
