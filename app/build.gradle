@@ -29,7 +29,18 @@ android {
     productFlavors {
         demo {
             minSdkVersion 19
-            applicationId 'com.memo.marcedev.memozationtest'
+            applicationId 'com.marceme.mvocabulary'
+            targetSdkVersion 28
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            versionCode 1
+            versionName '1.0'
+            vectorDrawables.useSupportLibrary = true
+            dimension "mode"
+        }
+
+        transition {
+            minSdkVersion 19
+            applicationId 'com.marceme.mvocabulary.vocabularytransition'
             targetSdkVersion 28
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
             versionCode 1

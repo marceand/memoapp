@@ -8,11 +8,11 @@
     android:background="#fff">
 
     <EditText
-        android:id="@+id/edit_word"
+        android:id="@+id/edit_vocabulary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_word"
+        android:hint="@string/hint_vocabulary"
         android:inputType="textAutoComplete"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

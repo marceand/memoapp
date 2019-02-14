@@ -1,4 +1,4 @@
-package com.memo.marcedev.memozation
+package com.marceme.mvocabulary
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
@@ -8,55 +8,55 @@ import kotlinx.coroutines.experimental.android.Main
 import java.lang.Exception
 import kotlin.coroutines.experimental.CoroutineContext
 
-class WordViewModel(application: Application) : AndroidViewModel(application) {
+class VocabularyViewModel(application: Application) : AndroidViewModel(application) {
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository: WordRepository
-    val allWords: LiveData<List<Word>>
+    private val repository: VocabularyRepository
+    val allVocabulary: LiveData<List<Vocabulary>>
 
     init {
-        val wordsDao = WordRoomDatabase.getDatabase(application).wordDao()
-        repository = WordRepository(wordsDao)
-        allWords = repository.allWords
+        val vocabularyDao = VocabularyRoomDatabase.getDatabase(application).vocabularyDao()
+        repository = VocabularyRepository(vocabularyDao)
+        allVocabulary = repository.allVocabulary
     }
 
     fun save(word: String){
         if(word.isNotEmpty()) {
-            val newWord = Word(word)
-            insert(newWord)
+            val vocabulary= Vocabulary(word)
+            insert(vocabulary)
         }
     }
 
-    private fun insert(word: Word) = scope.launch(Dispatchers.IO) {
+    private fun insert(vocabulary: Vocabulary) = scope.launch(Dispatchers.IO) {
         try {
-            repository.insert(word)
+            repository.insert(vocabulary)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
-    fun delete(word: Word) = scope.launch(Dispatchers.IO) {
+    fun delete(vocabulary: Vocabulary) = scope.launch(Dispatchers.IO) {
         try {
-            repository.delete(word)
+            repository.delete(vocabulary)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
-    fun update(wordEdited: String, word: Word) {
+    fun update(wordEdited: String, vocabulary: Vocabulary) {
         if (wordEdited.isNotEmpty()) {
-            word.word= wordEdited
-            update(word)
+            vocabulary.word= wordEdited
+            update(vocabulary)
         }
     }
 
-    private fun update(word: Word) = scope.launch(Dispatchers.IO) {
+    private fun update(vocabulary: Vocabulary) = scope.launch(Dispatchers.IO) {
         try {
-            repository.update(word)
+            repository.update(vocabulary)
         }catch (e: Exception){
             e.printStackTrace()
         }

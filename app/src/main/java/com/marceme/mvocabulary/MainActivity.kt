@@ -1,4 +1,4 @@
-package com.memo.marcedev.memozation
+package com.marceme.mvocabulary
 
 import android.arch.lifecycle.Observer
 import android.support.v7.app.AppCompatActivity
@@ -16,10 +16,10 @@ import android.content.Intent
 import android.net.Uri
 
 
-class MainActivity : AppCompatActivity(), OnWordSelected{
+class MainActivity : AppCompatActivity(), OnVocabularySelected {
 
-    private lateinit var wordViewModel: WordViewModel
-    private lateinit var wordAdapter: WordsAdapter
+    private lateinit var vocabularyViewModel: VocabularyViewModel
+    private lateinit var vocabularyAdapter: VocabularyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,27 +27,27 @@ class MainActivity : AppCompatActivity(), OnWordSelected{
 
         setSupportActionBar(toolbar)
 
-        wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
+        vocabularyViewModel = ViewModelProviders.of(this).get(VocabularyViewModel::class.java)
 
-        wordAdapter = WordsAdapter(this)
+        vocabularyAdapter = VocabularyAdapter(this)
         val viewManager = LinearLayoutManager(this)
 
-        recyclerview_words.apply {
+        recyclerview_vocabulary.apply {
             setHasFixedSize(false)
             layoutManager = viewManager
-            adapter = wordAdapter
+            adapter = vocabularyAdapter
         }
 
 
-        wordViewModel.allWords.observe(this, Observer { words ->
-            words?.let { wordAdapter.updateWords(it) }
+        vocabularyViewModel.allVocabulary.observe(this, Observer { vocabularyWords ->
+            vocabularyWords?.let { vocabularyAdapter.updateVocabularyWords(it) }
         })
 
-        fab.setOnClickListener { addNewWord() }
+        fab.setOnClickListener { addVocabulary() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_word, menu)
+        menuInflater.inflate(R.menu.menu_vocabulary, menu)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -65,61 +65,61 @@ class MainActivity : AppCompatActivity(), OnWordSelected{
         val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", "", null))
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Vocabulary words")
-        emailIntent.putExtra(Intent.EXTRA_TEXT, wordAdapter.allWordAsString())
+        emailIntent.putExtra(Intent.EXTRA_TEXT, vocabularyAdapter.allWordAsString())
         startActivity(Intent.createChooser(emailIntent, "Send email..."))
     }
 
-    private fun addNewWord() {
-        val dialogView = View.inflate(this, R.layout.activity_new_word, null)
-        val editText = dialogView.findViewById(R.id.edit_word) as EditText
+    private fun addVocabulary() {
+        val dialogView = View.inflate(this, R.layout.new_vocabulary, null)
+        val editText = dialogView.findViewById(R.id.edit_vocabulary) as EditText
         val editDialog = AlertDialog.Builder(this)
-                .setTitle(R.string.add_word_title)
+                .setTitle(R.string.add_vocabulary_title)
                 .setView(dialogView)
                 .setNegativeButton(R.string.action_cancel, null)
-                .setPositiveButton(R.string.action_save){_,_ -> saveWord(editText)}
+                .setPositiveButton(R.string.action_save){ _, _ -> saveVocabulary(editText)}
                 .create()
         editDialog.show()
     }
 
-    private fun saveWord(editText: EditText){
+    private fun saveVocabulary(editText: EditText){
         val word = editText.text.toString()
-        wordViewModel.save(word)
+        vocabularyViewModel.save(word)
     }
 
-    override fun edit(word: Word) {
-        onWordEdited(word)
+    override fun edit(vocabulary: Vocabulary) {
+        onVocabularyEdited(vocabulary)
     }
 
-    private fun onWordEdited(word: Word) {
-        val dialogView = View.inflate(this, R.layout.activity_new_word, null)
-        val editText = dialogView.findViewById(R.id.edit_word) as EditText
-        editText.setText(word.word)
+    private fun onVocabularyEdited(vocabulary: Vocabulary) {
+        val dialogView = View.inflate(this, R.layout.new_vocabulary, null)
+        val editText = dialogView.findViewById(R.id.edit_vocabulary) as EditText
+        editText.setText(vocabulary.word)
 
         val editDialog = AlertDialog.Builder(this)
                 .setTitle(R.string.edit_title)
                 .setView(dialogView)
                 .setNegativeButton(R.string.action_cancel, null)
-                .setPositiveButton(R.string.action_save){_,_ -> saveWord(editText, word)}
+                .setPositiveButton(R.string.action_save){ _, _ -> saveVocabulary(editText, vocabulary)}
                 .create()
         editDialog.show()
     }
 
-    override fun delete(word: Word) {
+    override fun delete(vocabulary: Vocabulary) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.delete_title)
         builder.setMessage(R.string.delete_message)
         builder.setNegativeButton(R.string.action_cancel, null)
-        builder.setPositiveButton(R.string.action_delete) { _, _ -> deleteWord(word)}
+        builder.setPositiveButton(R.string.action_delete) { _, _ -> deleteVocabulary(vocabulary)}
         builder.create().show()
     }
 
-    private fun deleteWord(word: Word) {
-        wordViewModel.delete(word)
+    private fun deleteVocabulary(vocabulary: Vocabulary) {
+        vocabularyViewModel.delete(vocabulary)
     }
 
-    private fun saveWord(editText: EditText, word: Word) {
+    private fun saveVocabulary(editText: EditText, vocabulary: Vocabulary) {
         val wordEdited = editText.text.toString()
-        wordViewModel.update(wordEdited, word)
+        vocabularyViewModel.update(wordEdited, vocabulary)
     }
 
 }

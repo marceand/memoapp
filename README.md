@@ -1,9 +1,9 @@
 # Memoization app
 
-An app for saving, editing, deleting and sharing vocabulary word.
+An app for saving, editing, deleting and sharing vocabulary vocabulary.
 
 # Dependency
-1. Room - used to store vocabulary word
+1. Room - used to store vocabulary vocabulary
 2. Livedata - used to update data automatically
 3. Coroutine - used to perform asynchronous database operations 
 
